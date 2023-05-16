@@ -1,35 +1,5 @@
 using System;
 
-class Car
-{
-    public int ID { get; set; }
-    public string Make { get; set; }
-    public string Model { get; set; }
-    public int Year { get; set; }
-    public decimal Price { get; set; }
-    public string BodyType { get; set; }
-    public Engine Engine { get; set; }
-    public int Weight { get; set; }
-
-    public Car(int id, string make, string model, int year, decimal price, string bodyType, Engine engine, int weight)
-    {
-        ID = id;
-        Make = make;
-        Model = model;
-        Year = year;
-        Price = price;
-        BodyType = bodyType;
-        Engine = engine;
-        Weight = weight;
-    }
-
-    public override string ToString()
-    {
-        return string.Format("| {0,3} | {1,-12} | {2,-11} | {3,-4} | {4,-11:C} | {5,-12} | {6,-11} | {7,-10} | {8,-9} | {9,-12} |",
-                             ID, Make, Model, Year, Price, BodyType, Engine.Type, Engine.Horsepower, Engine.Kilowatts, Weight);
-    }
-}
-
 class Engine
 {
     public string Type { get; set; }

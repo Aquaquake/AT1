@@ -1,0 +1,13 @@
+class Engine
+{
+    public string Type { get; set; }
+    public int Horsepower { get; set; }
+    public int Kilowatts { get; set; }
+
+    public Engine(string type, int horsepower, int kilowatts)
+    {
+        Type = type;
+        Horsepower = horsepower;
+        Kilowatts = kilowatts;
+    }
+}
