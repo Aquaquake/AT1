@@ -1,26 +1,41 @@
 using System;
 
-class Engine
-{
-    public string Type { get; set; }
-    public int Horsepower { get; set; }
-    public int Kilowatts { get; set; }
 
-    public Engine(string type, int horsepower, int kilowatts)
+
+class text
+{
+    public void StudentUpdate(string id, string lastname, string firstname, string middlename, string suffix, string age, string gender, string paddress, DateTime birthday)
     {
-        Type = type;
-        Horsepower = horsepower;
-        Kilowatts = kilowatts;
+        result.Query = "Update tbl_student set lastname = '" + lastname + "', firstname = '" + firstname + "', middlename = '" + middlename + "', suffix = '" + suffix + "', age = '" + age + "', gender = '" + gender + "', pmt_address = '" + paddress + "', birthday = to_date('" + String.Format("{0:MM/dd/yyyy}", birthday.ToShortDateString()) + "','mm/dd/yyyy') where std_id = '" + id + "'";
+        result.Transaction = true;
+        result.ExecuteNonQuery();
+        StudentCommit();
+        result.Close();
+    }
+
+    public void StudentDelete(string id)
+    {
+        result.Query = "Delete from tbl_student where std_id = '" + id + "'";
+        result.ExecuteNonQuery();
+        StudentCommit();
+       result.Close();
+    }
+
+    public void StudentCommit()
+    {
+        if (!result.Commit())
+        {
+        result.Rollback();
+    }
     }
 }
-
 class Program
 {
     static void Main(string[] args)
     {
         Engine fourCylinder = new Engine("4-cylinder", 0, 0);
         Engine v8 = new Engine("V8", 0, 0);
-
+        //table for the data of cars 
         Car[] cars = new Car[]
         {
             new Car(1, "Mazda", "MX-5", 2022, 41960M, "Convertible", new Engine(fourCylinder.Type, 181, 135), 1045),
