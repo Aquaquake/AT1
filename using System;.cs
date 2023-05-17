@@ -4,9 +4,9 @@ using System;
 
 class text
 {
-    public void CarData(string ID, string Make, string Model, int Year, decimal price, string BodyType, string Engine, int Weight)
+    public void CarData(string ID, string Make, string Model, int Year, decimal Price, string BodyType, string Engine, int Weight)
     {
-        result.Query = "Update tbl_student set lastname = '" + lastname + "', firstname = '" + firstname + "', middlename = '" + middlename + "', suffix = '" + suffix + "', age = '" + age + "', gender = '" + gender + "', pmt_address = '" + paddress + "', birthday = to_date('" + String.Format("{0:MM/dd/yyyy}", birthday.ToShortDateString()) + "','mm/dd/yyyy') where std_id = '" + id + "'";
+        result.Query = "Update Car_data set ID = '" + ID + "', Make = '" + Make + "', Model = '" + Model + "', Year = '" + Year + "', Price = '" + Price + "', BodyType = '" + BodyType + "', Engine = '" + Engine + "', Weight = '" + Weight;
         result.Transaction = true;
         result.ExecuteNonQuery();
         CarCommit();
@@ -15,7 +15,7 @@ class text
 
     public void CarDelete(string id)
     {
-        result.Query = "Delete from tbl_student where std_id = '" + id + "'";
+        result.Query = "Delete from CarData where CarData_id = '" + id + "'";
         result.ExecuteNonQuery();
         CarCommit();
        result.Close();
