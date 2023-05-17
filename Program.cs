@@ -16,7 +16,7 @@ class Program
         }
 
         Console.WriteLine("Sorting By Name...");
-        carsList.SortByName();
+        carsList.OrderByName();
 
         foreach (var car in carsList.Cars)
         {

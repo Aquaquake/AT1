@@ -20,13 +20,13 @@ public class ListOfCars
         Cars.Add(new CarModel(5, "Volkswagen", "Golf GTI", 2022, 58490M, "Hatchback", 786, 4523));
     }
 
-    public void SortByName()
+    public void OrderByName()
     {
-        Cars.OrderBy(c => c.Make);
+        Cars = Cars.OrderBy(c => c.Make).ToList();
     }
 
     public void SortByBodyType() 
     {
-        Cars.OrderBy(c => c.BodyType);
+        Cars = Cars.OrderBy(c => c.BodyType).ToList();
     }
 }
