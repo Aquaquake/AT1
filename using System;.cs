@@ -4,24 +4,24 @@ using System;
 
 class text
 {
-    public void StudentUpdate(string id, string lastname, string firstname, string middlename, string suffix, string age, string gender, string paddress, DateTime birthday)
+    public void CarData(string ID, string Make, string Model, int Year, decimal price, string BodyType, string Engine, int Weight)
     {
         result.Query = "Update tbl_student set lastname = '" + lastname + "', firstname = '" + firstname + "', middlename = '" + middlename + "', suffix = '" + suffix + "', age = '" + age + "', gender = '" + gender + "', pmt_address = '" + paddress + "', birthday = to_date('" + String.Format("{0:MM/dd/yyyy}", birthday.ToShortDateString()) + "','mm/dd/yyyy') where std_id = '" + id + "'";
         result.Transaction = true;
         result.ExecuteNonQuery();
-        StudentCommit();
+        CarCommit();
         result.Close();
     }
 
-    public void StudentDelete(string id)
+    public void CarDelete(string id)
     {
         result.Query = "Delete from tbl_student where std_id = '" + id + "'";
         result.ExecuteNonQuery();
-        StudentCommit();
+        CarCommit();
        result.Close();
     }
 
-    public void StudentCommit()
+    public void CarCommit()
     {
         if (!result.Commit())
         {
