@@ -1,4 +1,6 @@
-    public class ConversionHptoKw
+namespace AT1;
+
+public class ConversionHptoKw
     // Class Converts Horsepower to Kilowatts
     {
     private double x;
