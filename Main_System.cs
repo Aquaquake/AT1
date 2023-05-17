@@ -48,9 +48,4 @@ class Program
         Console.WriteLine("| {0,-3} | {1,-12} | {2,-11} | {3,-4} | {4,-11} | {5,-12} | {6,-11} | {7,-10} | {8,-9} | {9,-12} |", "ID", "Make", "Model", "Year", "Price (AUD)", "Body Type", "Engine Type", "Horsepower", "Kilowatts", "Weight (kg)");
 
     }
-
-    public void Test() 
-    {
-
-    }
 }
