@@ -30,7 +30,7 @@ public class ListOfCars
         Cars = Cars.OrderBy(c => c.BodyType).ToList();
     }
 
-    public void PrintCar()
+    public void PrintCars()
     {
         Console.WriteLine("| {0,-3} | {1,-12} | {2,-11} | {3,-4} | {4,-12 } | {5,-12} | {6,-11} | {7,-10} | {8,-6} |",
         "ID", "Make", "Model", "Year", "Price (AUD)", "Body Type", "Weight (kg)", "Horsepower", "Kilowatts");

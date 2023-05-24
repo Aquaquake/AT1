@@ -1,15 +1,15 @@
 using System;
 using AT1.Models;
+using AT1;
 
 class Program
 {
     static void Main(string[] args)
     {
-       
-      ListOfCars listOfCars = new ListOfCars();
-            listOfCars.InsertData();
-
-            // Call the PrintCar function
-            listOfCars.PrintCar();  
+        TextMenu textMenu = new TextMenu();
+        while (true) 
+        {
+            textMenu.DisplayMenu();
+        }
     }
 }
