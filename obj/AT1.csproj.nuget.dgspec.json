@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/workspaces/AT1/AT1.csproj": {}
+    "C:\\Users\\harry\\Desktop\\newijunfenwiufneiuwnfnewiunfewnifnwnfiuenw\\AT1\\AT1.csproj": {}
   },
   "projects": {
-    "/workspaces/AT1/AT1.csproj": {
+    "C:\\Users\\harry\\Desktop\\newijunfenwiufneiuwnfnewiunfewnifnwnfiuenw\\AT1\\AT1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/workspaces/AT1/AT1.csproj",
+        "projectUniqueName": "C:\\Users\\harry\\Desktop\\newijunfenwiufneiuwnfnewiunfewnifnwnfiuenw\\AT1\\AT1.csproj",
         "projectName": "AT1",
-        "projectPath": "/workspaces/AT1/AT1.csproj",
-        "packagesPath": "/home/codespace/.nuget/packages/",
-        "outputPath": "/workspaces/AT1/obj/",
+        "projectPath": "C:\\Users\\harry\\Desktop\\newijunfenwiufneiuwnfnewiunfewnifnwnfiuenw\\AT1\\AT1.csproj",
+        "packagesPath": "C:\\Users\\harry\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\harry\\Desktop\\newijunfenwiufneiuwnfnewiunfewnifnwnfiuenw\\AT1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/codespace/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\harry\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -37,6 +39,12 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.13.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -53,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/dotnet/7.0.203/sdk/7.0.203/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }
