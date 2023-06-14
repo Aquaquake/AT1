@@ -1,0 +1,14 @@
+using System;
+
+class MainProgram
+{
+    static void Main()
+{
+    Interval interval = new Interval(20);
+    interval.Dataset1(); // Corrected method name
+    interval.CheckInterval();
+
+    Console.ReadLine();
+}
+
+}

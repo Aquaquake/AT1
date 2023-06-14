@@ -1,0 +1,88 @@
+using System;
+using System.IO;
+using System.Text.Json;
+
+[Serializable]
+class MyClass
+{
+    public int Number1 { get; set; }
+    public int Number2 { get; set; }
+    public string Text { get; set; }
+
+    // Q5.1. Make a class with three instance variables with two integers and a string type.
+    // Provide set/get methods and constructors.
+
+    public MyClass(int number1, int number2, string text)
+    {
+        this.Number1 = number1;
+        this.Number2 = number2;
+        this.Text = text;
+    }
+
+    // Q5.2. Add functionality to serialize the class to binary data.
+    // Add functionality to do the inverse process, from the binary data, read and reconstruct the class object instance.
+
+    public void Serialize(string filePath)
+    {
+        string jsonString = JsonSerializer.Serialize(this);
+        File.WriteAllText(filePath, jsonString);
+    }
+
+    public static MyClass Deserialize(string filePath)
+    {
+        string jsonString = File.ReadAllText(filePath);
+        return JsonSerializer.Deserialize<MyClass>(jsonString);
+    }
+
+    // Q5.3. Write an equality comparison function which compares two of the class objects and test for equality.
+    // This is to be a member function of the class.
+    // It returns a Boolean value of true or false depending on the test.
+
+    public bool Equality(MyClass other)
+    {
+        if (other == null)
+        {
+            return false;
+        }
+
+        return this.Number1 == other.Number1 &&
+               this.Number2 == other.Number2 &&
+               this.Text == other.Text;
+    }
+}
+class Program2
+{
+    static void Main()
+    {
+        // Q5.4. Test the binary serialization.
+        // Make a class instance, convert the class instance to its binary form (as a binary file),
+        // and reconstruct the object from the binary file.
+
+        MyClass originalObject = new MyClass(10, 20, "Hello World");
+        string binaryFilePath = "data.bin";
+
+        originalObject.Serialize(binaryFilePath);
+
+        MyClass reconstructedObject = MyClass.Deserialize(binaryFilePath);
+
+        // Use the equality comparison function to check if the reconstructed object is identical to the original object.
+        bool isIdentical = originalObject.Equality(reconstructedObject);
+
+        Console.WriteLine("Is Identical: " + isIdentical);
+
+        // Q5.5. Serialize the class instance to a binary file, and then deserialize it back to reconstruct a new instance.
+        // Use the equality comparison function to check if the reconstructed object is identical to the original object.
+
+        MyClass originalInstance = new MyClass(30, 40, "Hello World");
+        string binaryFilePath2 = "data2.bin";
+
+        originalInstance.Serialize(binaryFilePath2);
+
+        MyClass reconstructedInstance = MyClass.Deserialize(binaryFilePath2);
+
+        // Use the equality comparison function to check if the reconstructed instance is identical to the original instance.
+        bool isIdentical2 = originalInstance.Equality(reconstructedInstance);
+
+        Console.WriteLine("Is Identical: " + isIdentical2);
+    }
+}
