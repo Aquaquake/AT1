@@ -1,6 +1,6 @@
 using System;
 using System.IO;
-using System.Text.Json;
+using System.Runtime.Serialization.Formatters.Binary;
 
 [Serializable]
 class MyClass
@@ -24,14 +24,20 @@ class MyClass
 
     public void Serialize(string filePath)
     {
-        string jsonString = JsonSerializer.Serialize(this);
-        File.WriteAllText(filePath, jsonString);
+        BinaryFormatter formatter = new BinaryFormatter();
+        using (FileStream stream = new FileStram(filePath, FileMode.Create))
+        {
+            formatter.Serialize(stream, this);
+        }
     }
 
     public static MyClass Deserialize(string filePath)
     {
-        string jsonString = File.ReadAllText(filePath);
-        return JsonSerializer.Deserialize<MyClass>(jsonString);
+        BinaryFormatter formatter = new BinaryFormatter();
+        using (FileStream stream = new FileStream(filePath, FileMode.Open))
+        {
+            return (MyClass)formatter.Deserialize(stream);
+        }
     }
 
     // Q5.3. Write an equality comparison function which compares two of the class objects and test for equality.
@@ -50,7 +56,8 @@ class MyClass
                this.Text == other.Text;
     }
 }
-class Program2
+
+class Program
 {
     static void Main()
     {
@@ -71,7 +78,7 @@ class Program2
         Console.WriteLine("Is Identical: " + isIdentical);
 
         // Q5.5. Serialize the class instance to a binary file, and then deserialize it back to reconstruct a new instance.
-        // Use the equality comparison function to check if the reconstructed object is identical to the original object.
+        // Use the equality comparison function to check if the reconstructed instance is identical to the original instance.
 
         MyClass originalInstance = new MyClass(30, 40, "Hello World");
         string binaryFilePath2 = "data2.bin";
