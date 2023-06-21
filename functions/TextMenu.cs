@@ -7,10 +7,13 @@ namespace AT1.Models
     {
         private ListOfCars _carModel;
 
+        private ListOfCars _cars;
+
         public TextMenu()
         {
             _carModel = new ListOfCars();
             _carModel.InsertData(); // Inserting initial car data
+            _cars = new ListOfCars();
         }
 
         public void DisplayMenu()
@@ -21,6 +24,7 @@ namespace AT1.Models
             Console.WriteLine("3. Add Car");
             Console.WriteLine("4. Delete Car");
             Console.WriteLine("5. Quit");
+            Console.WriteLine("6. search");
 
             var userInput = Console.ReadLine(); // Reading user input
 
@@ -44,6 +48,10 @@ namespace AT1.Models
                     break;
                 case "5":
                     Environment.Exit(0); // Exiting the program
+                    break;
+                case "6":
+                    menu06_search();
+                    DisplayMenu();
                     break;
             }
         }
@@ -82,6 +90,13 @@ namespace AT1.Models
             {
                 Console.WriteLine("Invalid car ID.");
             }
+        }
+
+        private void menu06_search()
+        {
+            _cars = _cars.OrderBy(x => x.Make).ToList(); 
+
+            Console.WriteLine(_cars);    
         }
     }
 }

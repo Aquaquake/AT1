@@ -22,17 +22,7 @@ namespace AT1.Models
             _cars.Add(new FindCar.Car { Id = 5, Make = "Volkswagen", Model = "Golf GTI", Year = 2022, Price = 58490.00m, BodyType = "Hatchback", Weight = 1399, Horsepower = 242, Kilowatts = 180 });
         }
 
-        public void sortbymake()
-        {
-            _cars = _cars.OrderBy(x => x.Make).ToList();        
-        }
-
-        public void print()
-        {
-            Console.WriteLine(_cars);
-        }
-
-
+        
         public void PrintCars()
         {
             Console.WriteLine("Car List:\n");

@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\harry\\Desktop\\newijunfenwiufneiuwnfnewiunfewnifnwnfiuenw\\AT1\\AT1.csproj": {}
+    "/workspaces/AT1/AT1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\harry\\Desktop\\newijunfenwiufneiuwnfnewiunfewnifnwnfiuenw\\AT1\\AT1.csproj": {
+    "/workspaces/AT1/AT1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\harry\\Desktop\\newijunfenwiufneiuwnfnewiunfewnifnwnfiuenw\\AT1\\AT1.csproj",
+        "projectUniqueName": "/workspaces/AT1/AT1.csproj",
         "projectName": "AT1",
-        "projectPath": "C:\\Users\\harry\\Desktop\\newijunfenwiufneiuwnfnewiunfewnifnwnfiuenw\\AT1\\AT1.csproj",
-        "packagesPath": "C:\\Users\\harry\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\harry\\Desktop\\newijunfenwiufneiuwnfnewiunfewnifnwnfiuenw\\AT1\\obj\\",
+        "projectPath": "/workspaces/AT1/AT1.csproj",
+        "packagesPath": "/home/codespace/.nuget/packages/",
+        "outputPath": "/workspaces/AT1/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\harry\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/codespace/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -61,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/dotnet/7.0.203/sdk/7.0.203/RuntimeIdentifierGraph.json"
         }
       }
     }
