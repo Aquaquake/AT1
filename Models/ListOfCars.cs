@@ -145,5 +145,10 @@ namespace AT1.Models
                 Console.WriteLine("Car not found.");
             }
         }
+
+        public void SortMake()
+        {
+            _cars.Sort((car1, car2) => string.Compare(car1.Make, car2.Make, StringComparison.Ordinal));
+        }
     }
 }

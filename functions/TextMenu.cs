@@ -94,9 +94,9 @@ namespace AT1.Models
 
         private void menu06_search()
         {
-            _cars = _cars.OrderBy(x => x.Make).ToList(); 
-
-            Console.WriteLine(_cars);    
-        }
+            
+            _carModel.SortMake();
+            _carModel.PrintCars();
+        }   
     }
 }
