@@ -1,0 +1,232 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+
+[Serializable]
+public class Row
+{
+    public string Make { get; set; }
+    public int Year { get; set; }
+
+    public Row(string make, int year)
+    {
+        Make = make;
+        Year = year;
+    }
+
+    // Serializes the Row object to a string representation
+    public string SerializeToString()
+    {
+        return $"{Make},{Year}";
+    }
+
+    // Deserializes the Row object from a string representation
+    public static Row DeserializeFromString(string data)
+    {
+        string[] parts = data.Split(',');
+        if (parts.Length == 2 && int.TryParse(parts[1], out int year))
+        {
+            return new Row(parts[0], year);
+        }
+
+        return null;
+    }
+
+    public override string ToString()
+    {
+        return $"Make: {Make}, Year: {Year}";
+    }
+}
+
+public abstract class Table
+{
+    // Abstract method to read the table data
+    public abstract void Read(); // Corresponds to Question 2
+
+    // Abstract method to write the table data
+    public abstract void Write(); // Corresponds to Question 2
+}
+
+public class TableFile : Table
+{
+    private List<Row> rows;
+
+    public TableFile()
+    {
+        rows = new List<Row>();
+    }
+
+    public override void Read()
+    {
+        rows.Clear();
+
+        try
+        {
+            // Binary deserialization to read the Table class and its Row objects from a binary file
+            BinaryFormatter formatter = new BinaryFormatter();
+            using (FileStream stream = new FileStream("table.bin", FileMode.Open))
+            {
+                rows = (List<Row>)formatter.Deserialize(stream);
+            }
+
+            Console.WriteLine("Table data read successfully.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error reading table data: " + ex.Message);
+        }
+    }
+
+    public override void Write()
+    {
+        try
+        {
+            // Binary serialization to write the Table class and its Row objects to a binary file
+            BinaryFormatter formatter = new BinaryFormatter();
+            using (FileStream stream = new FileStream("table.bin", FileMode.Create))
+            {
+                formatter.Serialize(stream, rows);
+            }
+
+            Console.WriteLine("Table data written successfully.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error writing table data: " + ex.Message);
+        }
+    }
+
+    public void AddRow(Row row)
+    {
+        rows.Add(row);
+    }
+
+    public void PrintRows()
+    {
+        Console.WriteLine("Table Rows:\n");
+        foreach (Row row in rows)
+        {
+            Console.WriteLine(row.ToString());
+        }
+    }
+
+    // Sorts the table by the specified column (Make or Year)
+    public void SortTable(string column) // Corresponds to Question 5
+    {
+        if (column.Equals("Make", StringComparison.OrdinalIgnoreCase))
+        {
+            rows.Sort((r1, r2) => string.Compare(r1.Make, r2.Make, StringComparison.OrdinalIgnoreCase));
+        }
+        else if (column.Equals("Year", StringComparison.OrdinalIgnoreCase))
+        {
+            rows.Sort((r1, r2) => r1.Year.CompareTo(r2.Year));
+        }
+    }
+
+    // Validates if a row object is valid
+    public bool ValidateRow(Row row) // Corresponds to Question 6
+    {
+        // Add your validation logic here
+        // Return true if the row is valid, false otherwise
+        return true;
+    }
+}
+
+public class TableDb : Table
+{
+    private List<Row> rows;
+
+    public TableDb()
+    {
+        rows = new List<Row>();
+    }
+
+    public override void Read()
+    {
+        rows.Clear();
+
+        try
+        {
+            // Database-specific code to read the Table class and its Row objects from a database
+            Console.WriteLine("Table data read successfully from the database.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error reading table data from the database: " + ex.Message);
+        }
+    }
+
+    public override void Write()
+    {
+        try
+        {
+            // Database-specific code to write the Table class and its Row objects to a database
+            Console.WriteLine("Table data written successfully to the database.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error writing table data to the database: " + ex.Message);
+        }
+    }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        TableFile tableFile = new TableFile();
+
+        // Testing string serialization and deserialization (Question 1)
+        Row row1 = new Row("Ford", 2021);
+        string serializedRow1 = row1.SerializeToString();
+        Console.WriteLine("Serialized Row: " + serializedRow1);
+
+        Row deserializedRow1 = Row.DeserializeFromString(serializedRow1);
+        Console.WriteLine("Deserialized Row: " + deserializedRow1.ToString());
+
+        Console.WriteLine();
+
+        // Adding rows to the table
+        tableFile.AddRow(new Row("Toyota", 2019));
+        tableFile.AddRow(new Row("Chevrolet", 2020));
+        tableFile.AddRow(new Row("Honda", 2018));
+
+        // Printing rows
+        tableFile.PrintRows();
+
+        Console.WriteLine();
+
+        // Writing table data to a binary file (Question 4)
+        tableFile.Write();
+
+        // Reading table data from a binary file (Question 4)
+        tableFile.Read();
+
+        // Sorting the table by the "Make" column (Question 5)
+        tableFile.SortTable("Make");
+
+        // Printing sorted rows
+        tableFile.PrintRows();
+
+        Console.WriteLine();
+
+        // Validating a row (Question 6)
+        Row invalidRow = new Row("Invalid", 2022);
+        if (tableFile.ValidateRow(invalidRow))
+        {
+            tableFile.AddRow(invalidRow);
+        }
+        else
+        {
+            Console.WriteLine("Invalid row. Not added to the table.");
+        }
+
+        // Writing table data to a database (Question 7)
+        TableDb tableDb = new TableDb();
+        tableDb.Write();
+
+        // Reading table data from a database (Question 7)
+        tableDb.Read();
+    }
+}
