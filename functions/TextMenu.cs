@@ -6,7 +6,6 @@ namespace AT1.Models
     public class TextMenu
     {
         private ListOfCars _carModel;
-
         private ListOfCars _cars;
 
         public TextMenu()
@@ -50,7 +49,7 @@ namespace AT1.Models
                     Environment.Exit(0); // Exiting the program
                     break;
                 case "6":
-                    menu06_search();
+                    menu06_search(); // Sorting and displaying cars by make
                     DisplayMenu();
                     break;
             }
@@ -94,9 +93,8 @@ namespace AT1.Models
 
         private void menu06_search()
         {
-            
-            _carModel.SortMake();
-            _carModel.PrintCars();
+            _carModel.SortMake(); // Sorting cars by make
+            _carModel.PrintCars(); // Printing the sorted list of cars
         }   
     }
 }

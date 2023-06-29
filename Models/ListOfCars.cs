@@ -3,10 +3,12 @@ using System.Collections.Generic;
 
 namespace AT1.Models
 {
+    // Collection of car
     public class ListOfCars
     {
         private List<FindCar.Car> _cars; // Private field to store a list of cars
 
+        // Constructor
         public ListOfCars()
         {
             _cars = new List<FindCar.Car>(); // Initializing the list of cars
@@ -22,7 +24,6 @@ namespace AT1.Models
             _cars.Add(new FindCar.Car { Id = 5, Make = "Volkswagen", Model = "Golf GTI", Year = 2022, Price = 58490.00m, BodyType = "Hatchback", Weight = 1399, Horsepower = 242, Kilowatts = 180 });
         }
 
-        
         public void PrintCars()
         {
             Console.WriteLine("Car List:\n");
