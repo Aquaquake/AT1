@@ -13,7 +13,7 @@ namespace AT1.Models
         {
             _cars = new List<FindCar.Car>(); // Initializing the list of cars
         }
-
+        //this is the information that the code uses 
         public void InsertData()
         {
             // Inserting initial car data into the list
@@ -23,7 +23,7 @@ namespace AT1.Models
             _cars.Add(new FindCar.Car { Id = 4, Make = "Chevrolet", Model = "Camaro", Year = 2022, Price = 85990.00m, BodyType = "Coupe", Weight = 1683, Horsepower = 455, Kilowatts = 339 });
             _cars.Add(new FindCar.Car { Id = 5, Make = "Volkswagen", Model = "Golf GTI", Year = 2022, Price = 58490.00m, BodyType = "Hatchback", Weight = 1399, Horsepower = 242, Kilowatts = 180 });
         }
-
+        //this is the formating for the information
         public void PrintCars()
         {
             Console.WriteLine("Car List:\n");
@@ -36,7 +36,7 @@ namespace AT1.Models
                 Console.WriteLine($"| {car.Id.ToString().PadRight(3)} | {car.Make?.PadRight(11)} | {car.Model?.PadRight(9)} | {car.Year.ToString().PadRight(4)} | ${car.Price.ToString("F2").PadRight(10)} | {car.BodyType?.PadRight(11)} | {car.Weight.ToString().PadRight(12)} | {car.Horsepower.ToString().PadRight(10)} | {car.Kilowatts.ToString().PadRight(9)} |");
             }
         }
-
+        //this the formating when the search command is run
         public void DisplayCarById(int id)
         {
             var car = _cars.Find(c => c.Id == id); // Finding a car in the list by its ID
@@ -53,7 +53,7 @@ namespace AT1.Models
                 Console.WriteLine("Car not found.");
             }
         }
-
+        //this is how to add a car to the information
         public void AddCar()
         {
             Console.WriteLine("Enter car details:");
@@ -131,7 +131,7 @@ namespace AT1.Models
                 Console.WriteLine("Invalid ID.");
             }
         }
-
+        //this is how a car in delete from the information
         public void DeleteCar(int id)
         {
             var car = _cars.Find(c => c.Id == id); // Finding a car in the list by its ID
@@ -146,7 +146,7 @@ namespace AT1.Models
                 Console.WriteLine("Car not found.");
             }
         }
-
+        //this is how the cars are sorted
         public void SortMake()
         {
             _cars.Sort((car1, car2) => string.Compare(car1.Make, car2.Make, StringComparison.Ordinal));

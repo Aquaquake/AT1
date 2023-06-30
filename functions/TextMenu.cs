@@ -7,14 +7,14 @@ namespace AT1.Models
     {
         private ListOfCars _carModel;
         private ListOfCars _cars;
-
+        //
         public TextMenu()
         {
             _carModel = new ListOfCars();
             _carModel.InsertData(); // Inserting initial car data
             _cars = new ListOfCars();
         }
-
+        //display menu to the console 
         public void DisplayMenu()
         {
             Console.WriteLine("Car Data.");
@@ -54,12 +54,12 @@ namespace AT1.Models
                     break;
             }
         }
-
+        //print the menu to the console
         private void Menu01_DisplayCars()
         {
             _carModel.PrintCars(); // Printing the list of cars
         }
-
+        //this uses the ID to locate the car in the information
         private void Menu02_FindCar()
         {
             Console.WriteLine("Enter the car ID:");
@@ -72,12 +72,12 @@ namespace AT1.Models
                 Console.WriteLine("Invalid car ID.");
             }
         }
-
+        //this add the car to the informations 
         private void Menu03_AddCar()
         {
             _carModel.AddCar(); // Adding a new car to the list
         }
-
+        //this deletes a car from the information
         private void Menu04_DeleteCar()
         {
             Console.WriteLine("Enter the car ID:");
@@ -90,7 +90,7 @@ namespace AT1.Models
                 Console.WriteLine("Invalid car ID.");
             }
         }
-
+        //this search the information for a car
         private void menu06_search()
         {
             _carModel.SortMake(); // Sorting cars by make
