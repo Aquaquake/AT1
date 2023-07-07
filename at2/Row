@@ -125,12 +125,26 @@ public class TableFile : Table
     }
 
     // Validates if a row object is valid
-    public bool ValidateRow(Row row) // Corresponds to Question 6
+    public bool ValidateRow(Row row)
+{
+    // Check if the Make is empty
+    if (string.IsNullOrWhiteSpace(row.Make))
     {
-        // Add your validation logic here
-        // Return true if the row is valid, false otherwise
-        return true;
+        Console.WriteLine("Invalid row: Make is required.");
+        return false;
     }
+
+    // Check if the Year property is within a reasonable range
+    if (row.Year < 1950 || row.Year > DateTime.Now.Year)
+    {
+        Console.WriteLine("Invalid row: Year must be a valid year.");
+        return false;
+    }
+
+    // Return true if the row is valid according to the specified criteria
+    return true;
+}
+
 }
 
 public class TableDb : Table
